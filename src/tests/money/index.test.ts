@@ -1,4 +1,4 @@
-import { Dollar } from "../../services/dollar";
+import { Dollar, DollarInterface } from "../../services/dollar";
 
 // beforeAll(async (done) => {
 //   done();
@@ -11,7 +11,9 @@ import { Dollar } from "../../services/dollar";
 describe("Dollarのテスト", () => {
   test("掛け算のテスト", () => {
     const five = new Dollar(5);
-    five.times(2);
-    expect(10).toBe(five.amount);
+    let product: DollarInterface = five.times(2);
+    expect(10).toBe(product.amount);
+    product = five.times(3);
+    expect(15).toBe(product.amount);
   });
 });
