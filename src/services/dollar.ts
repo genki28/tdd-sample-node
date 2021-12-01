@@ -1,6 +1,6 @@
 export interface DollarInterface {
   times(multiplier: number): void;
-  equals(object: DollarInterface): boolean;
+  equals(object: Dollar): boolean;
 }
 
 export class Dollar implements DollarInterface {
