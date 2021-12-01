@@ -1,5 +1,5 @@
 import { Franc } from "../../services/Franc";
-import { Dollar } from "../../services/dollar";
+import { Dollar } from "../../services/Dollar";
 
 // beforeAll(async (done) => {
 //   done();
@@ -26,5 +26,9 @@ describe("Francのテスト", () => {
     const five = new Franc(5);
     expect(new Franc(10)).toEqual(five.times(2));
     expect(new Franc(15)).toEqual(five.times(3));
+  });
+  it("equalsのテスト", () => {
+    expect(new Franc(5).equals(new Franc(5))).toBe(true);
+    expect(new Franc(5).equals(new Franc(6))).toBe(false);
   });
 });

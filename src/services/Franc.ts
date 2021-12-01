@@ -1,19 +1,10 @@
-export interface FrancInterface {
-  times(multiplier: number): void;
-  equals(object: Franc): boolean;
-}
-
-export class Franc implements FrancInterface {
-  private amount: number;
+import { Money } from "./Money";
+export class Franc extends Money {
   constructor(amount: number) {
-    this.amount = amount;
+    super(amount);
   }
 
   times(multiplier: number) {
     return new Franc(this.amount * multiplier);
-  }
-
-  equals(object: Franc) {
-    return this.amount === object.amount;
   }
 }
