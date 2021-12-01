@@ -7,6 +7,9 @@ export class Money {
   }
 
   equals(money: Money): boolean {
-    return this.amount === money.amount;
+    return (
+      this.amount === money.amount &&
+      this.constructor.name === money.constructor.name
+    );
   }
 }
