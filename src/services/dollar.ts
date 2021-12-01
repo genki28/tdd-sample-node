@@ -1,11 +1,10 @@
 export interface DollarInterface {
-  amount: number;
   times(multiplier: number): void;
   equals(object: DollarInterface): boolean;
 }
 
 export class Dollar implements DollarInterface {
-  public amount: number;
+  private amount: number;
 
   constructor(amount: number) {
     this.amount = amount;
@@ -15,7 +14,7 @@ export class Dollar implements DollarInterface {
     return new Dollar(this.amount * multiplier);
   }
 
-  equals(object: DollarInterface): boolean {
+  equals(object: Dollar): boolean {
     return this.amount === object.amount;
   }
 }
