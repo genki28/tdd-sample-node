@@ -1,5 +1,6 @@
-import { Franc } from "../../services/Franc";
-import { Dollar } from "../../services/Dollar";
+import { Franc } from "../../services/internal";
+import { Dollar } from "../../services/internal";
+import { Money } from "../../services/internal";
 
 // beforeAll(async (done) => {
 //   done();
@@ -11,7 +12,7 @@ import { Dollar } from "../../services/Dollar";
 
 describe("Dollarのテスト", () => {
   it("掛け算のテスト", () => {
-    const five = new Dollar(5);
+    const five = Money.dollar(5);
     expect(new Dollar(10)).toEqual(five.times(2));
     expect(new Dollar(15)).toEqual(five.times(3));
   });
