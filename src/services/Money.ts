@@ -1,6 +1,12 @@
 export abstract class Money {
-  protected currencyName?: string;
-  constructor(protected amount: number) {}
+  protected currencyName: string;
+  protected amount: number;
+  // NOTE:
+  // constructor(protected amount: number)といった書き方も可能ですが、あえて以下の書き方をしています。
+  constructor(amount: number, currencyName: string) {
+    this.amount = amount;
+    this.currencyName = currencyName;
+  }
 
   abstract times(multiplier: number): Money;
 
@@ -16,32 +22,30 @@ export abstract class Money {
   }
 
   static dollar(amount: number): Dollar {
-    return new Dollar(amount);
+    return new Dollar(amount, "USD");
   }
 
   static franc(amount: number): Franc {
-    return new Franc(amount);
+    return new Franc(amount, "CHF");
   }
 }
 
 export class Dollar extends Money {
-  constructor(amount: number) {
-    super(amount);
-    this.currencyName = "USD";
+  constructor(amount: number, currencyName: string) {
+    super(amount, currencyName);
   }
 
   times(multiplier: number): Money {
-    return new Dollar(this.amount * multiplier);
+    return Money.dollar(this.amount * multiplier);
   }
 }
 
 export class Franc extends Money {
-  constructor(amount: number) {
-    super(amount);
-    this.currencyName = "CHF";
+  constructor(amount: number, currencyName: string) {
+    super(amount, currencyName);
   }
 
   times(multiplier: number): Money {
-    return new Franc(this.amount * multiplier);
+    return Money.franc(this.amount * multiplier);
   }
 }
