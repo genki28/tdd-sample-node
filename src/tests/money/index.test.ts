@@ -39,3 +39,9 @@ describe("通貨についてのテスト", () => {
     expect(Money.franc(1).currency()).toEqual("CHF");
   });
 });
+
+describe("classに対するテスト", () => {
+  it("classがequalかどうか", () => {
+    expect(new Money(10, "CHF").equals(new Franc(10, "CHF"))).toBe(true);
+  });
+});
